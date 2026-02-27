@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Mona Sans";
+  src: url("/assets/fonts/MonaSans[wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+
+    /* Alapon brand palette — clean blue-white social media feel */
+    --background: 0.963 0.004 247;       /* #F0F2F5 surface */
+    --foreground: 0.175 0.018 260;        /* near-black */
+
+    --card: 1 0 0;                        /* pure white */
+    --card-foreground: 0.175 0.018 260;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.175 0.018 260;
+
+    /* Alapon blue: #1877F2 → OKLCH approx 0.52 0.22 264 */
+    --primary: 0.52 0.22 264;
+    --primary-foreground: 1 0 0;
+
+    --secondary: 0.92 0.01 247;
+    --secondary-foreground: 0.35 0.04 260;
+
+    --muted: 0.935 0.006 250;
+    --muted-foreground: 0.51 0.028 260;
+
+    --accent: 0.935 0.01 250;
+    --accent-foreground: 0.35 0.04 260;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.007 250;
+    --input: 0.88 0.007 250;
+    --ring: 0.52 0.22 264;
+
+    /* Chart colors */
+    --chart-1: 0.52 0.22 264;
+    --chart-2: 0.65 0.18 162;
+    --chart-3: 0.75 0.15 84;
+    --chart-4: 0.62 0.22 30;
+    --chart-5: 0.55 0.18 303;
+
+    /* Sidebar */
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.175 0.018 260;
+    --sidebar-primary: 0.52 0.22 264;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.935 0.01 250;
+    --sidebar-accent-foreground: 0.35 0.04 260;
+    --sidebar-border: 0.88 0.007 250;
+    --sidebar-ring: 0.52 0.22 264;
+
+    /* Custom Alapon tokens */
+    --alapon-blue: 0.52 0.22 264;
+    --alapon-blue-hover: 0.46 0.22 264;
+    --alapon-blue-light: 0.94 0.05 264;
+    --alapon-green: 0.65 0.18 145;
+    --alapon-yellow: 0.85 0.17 84;
+    --alapon-red: 0.62 0.22 27;
+    --alapon-surface: 0.963 0.004 247;
+    --alapon-shop-accent: 0.70 0.17 145;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Mona Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Cabinet Grotesk", system-ui, sans-serif;
+  }
+  .font-body {
+    font-family: "Mona Sans", system-ui, sans-serif;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Like button animation */
+@keyframes like-pulse {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.4); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+.animate-like-pulse {
+  animation: like-pulse 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* Story gradient borders */
+.story-ring {
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  padding: 2.5px;
+  border-radius: 50%;
+}
+.story-ring-blue {
+  background: linear-gradient(135deg, #1877F2, #0099FF, #00C6FF);
+  padding: 2.5px;
+  border-radius: 50%;
+}
+
+/* Smooth tab transitions */
+.tab-content-enter {
+  animation: tab-in 0.22s ease-out;
+}
+@keyframes tab-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bottom nav safe area */
+.bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Feed card hover */
+.feed-card {
+  transition: box-shadow 0.2s ease;
+}
+.feed-card:hover {
+  box-shadow: 0 2px 12px oklch(0.18 0.02 260 / 0.1), 0 8px 24px oklch(0.18 0.02 260 / 0.07);
+}
+
+/* Video card hover */
+.video-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px oklch(0.18 0.02 260 / 0.12);
+}
+
+/* Product card hover */
+.product-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px oklch(0.18 0.02 260 / 0.12);
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+.skeleton-shimmer {
+  background: linear-gradient(to right, oklch(0.9 0 0) 8%, oklch(0.95 0 0) 38%, oklch(0.9 0 0) 54%);
+  background-size: 1000px 640px;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: oklch(0.8 0.005 250); border-radius: 2px; }
+
+/* Ad sponsored badge */
+.sponsored-badge {
+  background: oklch(0.935 0.006 250);
+  color: oklch(0.51 0.028 260);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Pre-roll countdown ring */
+@keyframes countdown-ring {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 88; }
+}
+.countdown-ring {
+  animation: countdown-ring 3s linear forwards;
+}

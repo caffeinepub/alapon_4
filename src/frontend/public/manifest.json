@@ -1,0 +1,17 @@
+{
+  "name": "Alapon",
+  "short_name": "Alapon",
+  "description": "Your social home — connect, share, shop, and discover.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F0F2F5",
+  "theme_color": "#1877F2",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/assets/generated/alapon-icon-192.dim_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
